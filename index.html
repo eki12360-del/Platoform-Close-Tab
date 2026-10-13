@@ -1,29 +1,59 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form Submitted Successfully</title>
-    <style>
-        body { font-family: sans-serif; text-align: center; padding-top: 100px; background-color: #f4f7f6; }
-        .card { background: white; padding: 40px; display: inline-block; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-        h1 { color: #2c3e50; }
-        button { background-color: #e74c3c; color: white; border: none; padding: 12px 24px; font-size: 16px; font-weight: bold; border-radius: 4px; cursor: pointer; margin-top: 20px; transition: 0.2s; }
-        button:hover { background-color: #c0392b; }
-    </style>
-</head>
-<body>
-    <div class="card">
-        <h1>Thank You!</h1>
-        <p>Your submission has been securely received.</p>
-        <button onclick="closeTab();">Click Here to Close This Tab</button>
-    </div>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1">
 
-    <script>
-        function closeTab() {
-            window.open('', '_self', ''); 
-            window.close(); 
-        }
-    </script>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      text-align: center;
+      display: grid;
+      place-items: center;
+      min-height: 100vh;
+      margin: 0;
+      background: #f8fafc;
+      color: #1e293b;
+    }
+
+    main {
+      padding: 24px;
+      max-width: 400px;
+    }
+
+    button {
+      padding: 12px 24px;
+      border: 0;
+      border-radius: 8px;
+      background: #2563eb;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <p id="status">Attempting to close this tab...</p>
+    <button onclick="closeTab()">Close Tab</button>
+  </main>
+
+  <script>
+    function closeTab() {
+      window.close();
+    }
+
+    window.addEventListener("load", () => {
+      closeTab();
+
+      setTimeout(() => {
+        document.getElementById("status").textContent =
+          "You may now close this tab or return to your previous page.";
+      }, 800);
+    });
+  </script>
 </body>
 </html>
