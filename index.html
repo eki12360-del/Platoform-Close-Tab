@@ -1,10 +1,29 @@
-function closeTab() {
-    window.close();
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1">
+    <title>Close Tab Test</title>
+</head>
+<body>
+    <h2>Close Window Test</h2>
+    <p id="status">Ready to test</p>
 
-    // Fallback: navigate back if closure fails.
-    setTimeout(() => {
-        if (document.visibilityState === "visible") {
-            window.history.back();
+    <button onclick="closeTab()">Close Tab</button>
+
+    <script>
+        function closeTab() {
+            document.getElementById("status").textContent =
+                "JavaScript executed successfully. Attempting closure...";
+
+            window.close();
+
+            setTimeout(function() {
+                document.getElementById("status").textContent =
+                    "The browser blocked window.close().";
+            }, 1000);
         }
-    }, 300);
-}
+    </script>
+</body>
+</html>
